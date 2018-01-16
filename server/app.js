@@ -12,9 +12,6 @@ mongoose.connect('mongodb://localhost:27017/reddit', () => {
 
 const app = express();
 
-// Routes
-app.use('/api', routes);
-
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,5 +27,8 @@ app.use(session({
 // Passport init
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Routes
+app.use('/api', routes);
 
 export default app;

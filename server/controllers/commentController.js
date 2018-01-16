@@ -3,12 +3,14 @@ import db from './../models';
 const commentController = {};
 
 commentController.post = (req, res) => {
+  console.log('landing request ' + req.body);
   const {
     userId,
     text,
     postId
    } = req.body;
 
+   console.log('userId: '+ userId);
   // validation
 
   const comment = new db.Comment({
