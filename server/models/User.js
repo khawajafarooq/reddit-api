@@ -9,11 +9,7 @@ const userSchema = new Schema({
     required: true,
     minlength: [5, 'Username must be 5 characters of more.'],
   },
-  password: {
-    type: String,
-    required: true,
-    minlength: [8, 'Password must be 8 characters of more.'],
-  },
+  password: String,
   isDeleted: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },
 });

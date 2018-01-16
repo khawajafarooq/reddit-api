@@ -6,6 +6,16 @@ userController.post = (req, res) => {
   const { username, password } = req.body;
 
   // validation
+  req.check('username', 'Username is required.').notEmpty();
+  req.check('password', 'Password is required.').notEmpty();
+
+  const errors = req.validationErrors();
+  if(errors) {
+    res.status(500).send({
+      error: errors
+    });
+    return;
+  }
 
   const user = new db.User({
     username,
