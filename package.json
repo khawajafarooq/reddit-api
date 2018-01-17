@@ -4,10 +4,28 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon bin/dev",
-    "clean": "rm -rf dist",
-    "build": "npm run clean && mkdir dist && babel sever -s -d dist",
-    "production": "npm run build && node bin/production"
+    "start": "npm run start-dev",
+    "start-prod": "better-npm-run start-prod",
+    "start-dev": "better-npm-run start-dev"
+  },
+  "betterScripts": {
+    "start-prod": {
+      "command": "nodemon bin/production",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": 3000,
+        "DEBUG": "*info,*error"
+      }
+    },
+    "start-dev": {
+      "command": "nodemon bin/dev",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": 3000,
+        "DEBUG": "*info,*dev,*error",
+        "DEBUG_COLORS": true
+      }
+    }
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +38,7 @@
     "body-parser": "^1.18.2",
     "config": "^1.29.2",
     "cookie-parser": "^1.4.3",
+    "debug": "^3.1.0",
     "express-session": "^1.15.6",
     "express-validator": "^4.3.0",
     "jade": "^1.11.0",
@@ -31,6 +50,7 @@
     "passport-local": "^1.0.0"
   },
   "dependencies": {
+    "better-npm-run": "^0.1.0",
     "express": "^4.16.2"
   }
 }
