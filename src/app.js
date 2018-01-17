@@ -1,17 +1,13 @@
 // Dependencies
 import express from 'express';
-import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import validator from 'express-validator';
 import passport from 'passport';
+import config from 'config';
 import routes from './routes';
-
-// Mongodb connection
-mongoose.connect('mongodb://localhost:27017/reddit', () => {
-  console.log('Connected to mongodb...');
-});
+import database from './database';
 
 const app = express();
 
@@ -20,6 +16,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(validator());
 app.use(cookieParser());
+
+// DB connection
+database.mongodb();
 
 // Session
 app.use(session({

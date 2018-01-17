@@ -1,0 +1,17 @@
+{
+	"database": {
+		"data": {
+			"host": "localhost",
+			"port": "27017",
+			"db": "reddit",
+			"reconnectTimeout": "5000"
+		}
+	},
+	"session": {
+		"key": "SID",
+		"secret": "luke"
+	},
+	"log": {
+		"prefix": "api:"
+	}
+}
