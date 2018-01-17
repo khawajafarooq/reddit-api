@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
+import middleware from './middleware';
 
-const { Schema } = mongoose;
+const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 const userSchema = new Schema({
@@ -14,7 +16,16 @@ const userSchema = new Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-// write encryption for password
+// methods
+userSchema.methods.comparePassword = function(candidatePassword, hash, callback){
+	bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
+    	if(err) throw err;
+    	callback(null, isMatch);
+	});
+}
+
+// hash the password before saving
+userSchema.pre('save', middleware.hashPassword);
 
 const User = mongoose.model('User', userSchema);
 export default User;
