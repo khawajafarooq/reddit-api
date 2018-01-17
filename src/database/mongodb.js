@@ -1,5 +1,6 @@
 import config from 'config';
 import mongoose from 'mongoose';
+import log from './../helpers/log';
 
 mongoose.Promise = Promise;
 
@@ -12,7 +13,9 @@ const reconnectTimeout = config.get('database.data.reconnectTimeout');
 
 function connect() {
   mongoose.connect(dbURI, { auto_reconnect: true })
-    .catch(() => {});
+    .catch((err) => {
+      log.error(`MongoDB connection error: ${err}`);
+    });
 }
 
 module.exports = () => {

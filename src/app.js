@@ -9,6 +9,10 @@ import config from 'config';
 import routes from './routes';
 import database from './database';
 
+// DB connection
+database.mongodb();
+
+// App
 const app = express();
 
 // Middleware
@@ -16,9 +20,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(validator());
 app.use(cookieParser());
-
-// DB connection
-database.mongodb();
 
 // Session
 app.use(session({
