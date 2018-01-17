@@ -5,6 +5,11 @@
 			"port": "27017",
 			"db": "reddit",
 			"reconnectTimeout": "5000"
+		},
+		"session": {
+			"host": "localhost",
+			"port": "6379",
+			"prefix": "node_"
 		}
 	},
 	"session": {

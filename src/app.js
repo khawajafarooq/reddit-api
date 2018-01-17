@@ -7,10 +7,11 @@ import validator from 'express-validator';
 import passport from 'passport';
 import config from 'config';
 import routes from './routes';
-import database from './database';
+import databases from './databases';
 
 // DB connection
-database.mongodb();
+databases.mongodb();
+const dbSession = databases.redis(session);
 
 // App
 const app = express();
@@ -22,11 +23,21 @@ app.use(validator());
 app.use(cookieParser());
 
 // Session
-app.use(session({
-  secret: 'secret',
+const appSession = session({
+  resave: true,
   saveUninitialized: true,
-  resave: true
-}));
+  key: config.get('session.key'),
+  secret: config.get('session.secret'),
+  store: dbSession,
+});
+app.use(appSession);
+
+app.use((req, res, next) => {
+  if (!req.session) {
+    log.error('Session not found (is Redis down?).');
+  }
+  next();
+});
 
 // Passport init
 app.use(passport.initialize());
