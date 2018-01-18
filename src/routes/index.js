@@ -1,4 +1,5 @@
 import express from 'express';
+import verifyToken from './../helpers/verifyToken';
 
 // Controller imports
 import basicController from './../controllers/basicController';
@@ -18,7 +19,7 @@ routes.post('/logout', userController.logout);
 
 // Post Routes
 routes.post('/post', postController.post);
-routes.get('/posts', postController.getAll);
+routes.get('/posts', verifyToken, postController.getAll);
 
 // Comment Routes
 routes.post('/comment', commentController.post);

@@ -1,8 +1,10 @@
+import config from 'config';
 import passport from 'passport';
+import jwt from 'jsonwebtoken';
 import log from '../helpers/log';
 import '../helpers/passport-strategies';
-import uuid from 'node-uuid';
 import { ServerError } from '../helpers/server';
+
 
 const userController = {};
 
@@ -35,8 +37,14 @@ userController.register = (req, res, next) => {
         message: info,
       });
     } else {
+
+      const authToken = jwt.sign({ id: user._id }, config.get('session.secret'), {
+        expiresIn: 86400 // expires in 24 hours
+      });
+
       res.status(200).json({
         success: true,
+        authToken: authToken,
         data: user,
       });
     }
@@ -59,11 +67,13 @@ userController.login = (req, res, next) => {
       });
     } else {
 
-      req.session.key = uuid.v1();
+      const authToken = jwt.sign({ id: user._id }, config.get('session.secret'), {
+        expiresIn: 86400 // expires in 24 hours
+      });
 
       res.status(200).json({
         success: true,
-        authToken: req.sessionID,
+        authToken: authToken,
       });
     }
   })(req, res, next);
@@ -71,25 +81,10 @@ userController.login = (req, res, next) => {
 
 userController.logout = (req, res) => {
 
-  log.dev(`token: ` + req.headers.token);
-  log.dev(`session ID: ` + req.sessionID);
-  if (req.session.key == req.headers.token) {
-    log.dev(`Logging out session: ` + req.session.token);
-  } else {
-    log.dev(`Session not validated`);
-  }
-  req.session.destroy(function(err){
-          if(err){
-            res.status(400).json({
-              message: err,
-            });
-          } else {
-            res.status(200).json({
-              success: true,
-              message: 'Successfully logged out.',
-            });
-          }
-      });
+  res.status(200).send({
+    success: true,
+    token: null
+  });
 }
 
 export default userController;
