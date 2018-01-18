@@ -8,6 +8,7 @@ import passport from 'passport';
 import config from 'config';
 import routes from './routes';
 import databases from './databases';
+import log from './helpers/log';
 
 // DB connection
 databases.mongodb();

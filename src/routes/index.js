@@ -14,6 +14,7 @@ routes.get('/', basicController.get);
 // User Routes
 routes.post('/register', userController.register);
 routes.post('/login', userController.login);
+routes.post('/logout', userController.logout);
 
 // Post Routes
 routes.post('/post', postController.post);
