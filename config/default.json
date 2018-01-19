@@ -14,7 +14,8 @@
 	},
 	"session": {
 		"key": "SID",
-		"secret": "luke"
+		"secret": "luke",
+		"expiry": "600"
 	},
 	"log": {
 		"prefix": "api:"

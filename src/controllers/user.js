@@ -39,7 +39,7 @@ userController.register = (req, res, next) => {
     } else {
 
       const authToken = jwt.sign({ id: user._id }, config.get('session.secret'), {
-        expiresIn: 86400 // expires in 24 hours
+        expiresIn: config.get('session.expiry')
       });
 
       res.status(200).json({
@@ -68,7 +68,7 @@ userController.login = (req, res, next) => {
     } else {
 
       const authToken = jwt.sign({ id: user._id }, config.get('session.secret'), {
-        expiresIn: 86400 // expires in 24 hours
+        expiresIn: config.get('session.expiry')
       });
 
       res.status(200).json({
