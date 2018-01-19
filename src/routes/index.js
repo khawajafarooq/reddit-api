@@ -15,10 +15,10 @@ routes.post('/login', controller.User.login);
 routes.post('/logout', controller.User.logout);
 
 // Post Routes
-routes.post('/post', controller.Post.post);
-routes.get('/posts', controller.Post.getAll);
+routes.post('/post', verifyToken, controller.Post.post);
+routes.get('/posts', verifyToken, controller.Post.getAll);
 
 // Comment Routes
-routes.post('/comment', controller.Comment.post);
+routes.post('/comment', verifyToken, controller.Comment.post);
 
 export default routes;
