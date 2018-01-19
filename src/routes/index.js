@@ -2,26 +2,23 @@ import express from 'express';
 import verifyToken from './../helpers/verifyToken';
 
 // Controller imports
-import basicController from './../controllers/basicController';
-import userController from './../controllers/userController';
-import postController from './../controllers/postController';
-import commentController from './../controllers/commentController';
+import controller from './../controllers';
 
 const routes = express();
 
 // Basic Routes
-routes.get('/', basicController.get);
+routes.get('/', controller.Welcome.get);
 
 // User Routes
-routes.post('/register', userController.register);
-routes.post('/login', userController.login);
-routes.post('/logout', userController.logout);
+routes.post('/register', controller.User.register);
+routes.post('/login', controller.User.login);
+routes.post('/logout', controller.User.logout);
 
 // Post Routes
-routes.post('/post', postController.post);
-routes.get('/posts', verifyToken, postController.getAll);
+routes.post('/post', controller.Post.post);
+routes.get('/posts', verifyToken, controller.Post.getAll);
 
 // Comment Routes
-routes.post('/comment', commentController.post);
+routes.post('/comment', controller.Comment.post);
 
 export default routes;
