@@ -1,5 +1,11 @@
-## reddit-api 📡
+## Reddit API 📡
 Node backend similar to reddit api
+
+### How to run?
+Install the dependencies:
+```ruby
+npm install
+```
 
 ### Author 🙏🏻
 **Web**: [Khawaja Farooq](http://khawajafarooq.github.io)
