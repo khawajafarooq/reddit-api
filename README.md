@@ -13,6 +13,19 @@ To start the server
 npm start
 ```
 
+### APIs
+**Welcome**
+```
+http://localhost:3000/api/
+```
+
+**User Management**
+```
+http://localhost:3000/api/register
+http://localhost:3000/api/login
+http://localhost:3000/api/logout
+```
+
 ### Author 🙏🏻
 **Web**: [Khawaja Farooq](http://khawajafarooq.github.io)
 
