@@ -1,11 +1,15 @@
 ## Reddit API 📡
 REST API similar to reddit API for mobile and front apps.
 
-### Components
-- Node
+### Stack 🚀
+- Node js
+- Mongo db
+
+### Node Modules
 - Express
-- Mongo
+- Mongoose
 - Passport
+- Bcrypt
 - JWT
 
 ### Dependencies
