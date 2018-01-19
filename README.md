@@ -1,5 +1,12 @@
 ## Reddit API 📡
-Node backend similar to reddit api
+REST API similar to reddit API for mobile and front apps.
+
+### Components
+- Node
+- Express
+- Mongo
+- Passport
+- JWT
 
 ### Dependencies
 Install the dependencies:
