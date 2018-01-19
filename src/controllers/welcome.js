@@ -1,9 +1,9 @@
-const welcome = {};
+const welcomeController = {};
 
-welcome.get = (req, res) => {
+welcomeController.get = (req, res) => {
   res.json({
     message: 'Welcome to Reddit API 👤'
   });
 };
 
-export default welcome;
+export default welcomeController;

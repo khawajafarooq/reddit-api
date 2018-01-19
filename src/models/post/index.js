@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
+import middleware from './middleware';
 
 const { Schema } = mongoose;
+const ObjectId = Schema.ObjectId;
 mongoose.Promise = global.Promise;
 
 const postSchema = new Schema({
@@ -9,9 +11,11 @@ const postSchema = new Schema({
   text: String,
   isDeleted: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },
-  _creator: { type: Schema.ObjectId, ref: 'User' },
-  _comments: [{ type: Schema.ObjectId, ref: 'Comment' }]
+  _creator: { type: ObjectId, ref: 'User' },
+  _comments: [{ type: ObjectId, ref: 'Comment' }]
 });
+
+postSchema.pre('find', middleware.autoPopulateCreator);
 
 const Post = mongoose.model('Post', postSchema);
 export default Post;

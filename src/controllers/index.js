@@ -1,7 +1,7 @@
 import Welcome from './welcome';
-import User from './userController';
-import Post from './postController';
-import Comment from './commentController';
+import User from './user';
+import Post from './post';
+import Comment from './comment';
 
 export default {
   Welcome,

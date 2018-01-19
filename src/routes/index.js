@@ -16,7 +16,7 @@ routes.post('/logout', controller.User.logout);
 
 // Post Routes
 routes.post('/post', controller.Post.post);
-routes.get('/posts', verifyToken, controller.Post.getAll);
+routes.get('/posts', controller.Post.getAll);
 
 // Comment Routes
 routes.post('/comment', controller.Comment.post);
