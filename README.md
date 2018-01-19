@@ -15,15 +15,29 @@ npm start
 
 ### APIs
 **Welcome**
+
+get api
 ```
 http://localhost:3000/api/
 ```
 
 **User Management**
+
+post api
 ```
 http://localhost:3000/api/register
 http://localhost:3000/api/login
 http://localhost:3000/api/logout
+```
+**User Post**
+
+post api
+```
+http://localhost:3000/api/post
+```
+get api
+```
+http://localhost:3000/api/posts
 ```
 
 ### Author 🙏🏻
