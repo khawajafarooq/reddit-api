@@ -1,10 +1,16 @@
 ## Reddit API 📡
 Node backend similar to reddit api
 
-### How to run?
+### Dependencies
 Install the dependencies:
 ```ruby
 npm install
+```
+
+### Run the server
+To start the server
+```ruby
+npm start
 ```
 
 ### Author 🙏🏻
